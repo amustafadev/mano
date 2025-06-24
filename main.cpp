@@ -1,8 +1,14 @@
+#include <iostream>
 #include "src/Application.h"
 
 int main(const int argc, char *argv[]) {
   // read filename from args
-  std::string filename = argc > 1 ? argv[1] : "";
+  if (argc < 2) {
+    std::cerr << "ERROR: Filename required!\n"
+              << "Example: mano <filename>";
+    return 1;
+  }
+  const std::string filename = argv[1];
 
   // launch application
   Application application(filename);
@@ -11,5 +17,3 @@ int main(const int argc, char *argv[]) {
   // return
   return 0;
 }
-
-
